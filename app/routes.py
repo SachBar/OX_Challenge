@@ -11,8 +11,9 @@ global bool
 
 @app.route('/')
 @app.route('/index')
-def index():
-    return "Hello, World!"
+@app.route('/graph_example')
+def graph_example():
+    return render_template('index.html')
 
 @app.route('/test')
 def test():
@@ -24,10 +25,7 @@ def test():
 
     return jsonify(response)
 
-@app.route('/graph_example')
-def graph_example():
 
-    return render_template('index.html')
 
 
 @app.route('/value/<x>')
