@@ -30,7 +30,6 @@ def test():
 
 @app.route('/value/<x>')
 def value(x):
-    print(x)
     df = pd.read_csv(data)
     global bool
     if df.iloc[int(x)-1, 2] - df.iloc[int(x)-1, 1] > 0:
