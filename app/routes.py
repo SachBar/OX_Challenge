@@ -19,12 +19,7 @@ def graph_example():
 
 @app.route('/test')
 def test():
-    global currentEnable
-    if currentEnable == True:
-        response = {'discount': False, "timeRemaining": 60}
-    else:
-        response = {'discount': True, "timeRemaining": 60}
-
+    response = {'discount': currentEnable, "timeRemaining": 60}
     return jsonify(response)
 
 
