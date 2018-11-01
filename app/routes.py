@@ -7,7 +7,7 @@ import pandas as pd
 
 data = 'data/final.csv'
 
-global bool
+currentEnable = False
 
 
 @app.route('/')
@@ -19,8 +19,8 @@ def graph_example():
 
 @app.route('/test')
 def test():
-    global bool
-    if bool == 0:
+    global currentEnable
+    if currentEnable == True:
         response = {'discount': False, "timeRemaining": 60}
     else:
         response = {'discount': True, "timeRemaining": 60}
@@ -31,9 +31,9 @@ def test():
 @app.route('/value/<x>')
 def value(x):
     df = pd.read_csv(data)
-    global bool
+    global currentEnable
     if df.iloc[int(x)-1, 2] - df.iloc[int(x)-1, 1] > 0:
-        bool = 1
+        currentEnable = True
     else:
-        bool = 0
+        currentEnable = False
     return render_template('index.html')
